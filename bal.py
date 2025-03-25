@@ -9,9 +9,11 @@ from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
+import plotly.graph_objects as go
 
-# Importar SMOTE
-from imblearn.over_sampling import SMOTE
+# Importar SMOTE, ADASYN y RandomOverSampler
+from imblearn.over_sampling import SMOTE, ADASYN, RandomOverSampler
 
 # Cargar el dataset
 file_path = "smart_mobility_dataset.csv"
@@ -52,17 +54,40 @@ for col in categorical_columns:
 X = df_clean.drop(columns=["Traffic_Condition"])
 y = df_clean["Traffic_Condition"]
 
-print("Distribución de clases antes de SMOTE:")
+print("Distribución de clases antes de balanceo:")
 print(y.value_counts())
 
-# Crear el objeto SMOTE
-smote = SMOTE(random_state=42)
+def graficar_distribucion(y, titulo):
+    clases = pd.Series(y).value_counts().reset_index()
+    clases.columns = ['Clase', 'Cantidad']
 
-# Ajustar y transformar
-X_resampled, y_resampled = smote.fit_resample(X, y)
+    fig = px.bar(clases, x='Clase', y='Cantidad', 
+                 title=titulo, 
+                 labels={'Cantidad': 'Número de muestras', 'Clase': 'Clase'})
+    fig.show()
 
-print("Distribución de clases después de SMOTE:")
-print(pd.Series(y_resampled).value_counts())
+def aplicar_balanceo(X, y, tecnica='none'):
+    if tecnica == 'smote':
+        sampler = SMOTE(random_state=42)
+    elif tecnica == 'adasyn':
+        sampler = ADASYN(random_state=42)
+    elif tecnica == 'random':
+        sampler = RandomOverSampler(random_state=42)
+    else:
+        print("Sin balanceo aplicado.")
+        return X, y  # No se aplica balanceo
+
+    X_resampled, y_resampled = sampler.fit_resample(X, y)
+    print(f"Distribución de clases después de {tecnica.upper()}:")
+    print(pd.Series(y_resampled).value_counts())
+    graficar_distribucion(y_resampled, f"Distribución de Clases Después de {tecnica.upper()}")
+    
+    return X_resampled, y_resampled
+
+graficar_distribucion(y, "Distribución de Clases Antes del Balanceo")
+
+tecnica_balanceo = 'none'  # Opciones: 'none', 'smote', 'adasyn', 'random'
+X_resampled, y_resampled = aplicar_balanceo(X, y, tecnica=tecnica_balanceo)
 
 X_train, X_test, y_train, y_test = train_test_split(
     X_resampled, y_resampled, 
@@ -104,6 +129,24 @@ history = model.fit(
     epochs=epochs, 
     batch_size=32
 )
+
+def graficar_entrenamiento(historia):
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(y=historia.history['accuracy'], mode='lines', name='Precisión (Entrenamiento)'))
+    fig.add_trace(go.Scatter(y=historia.history['val_accuracy'], mode='lines', name='Precisión (Validación)'))
+
+    fig.add_trace(go.Scatter(y=historia.history['loss'], mode='lines', name='Pérdida (Entrenamiento)'))
+    fig.add_trace(go.Scatter(y=historia.history['val_loss'], mode='lines', name='Pérdida (Validación)'))
+
+    fig.update_layout(title='Evolución del Entrenamiento', 
+                      xaxis_title='Épocas', 
+                      yaxis_title='Valor',
+                      legend=dict(x=0, y=1))
+
+    fig.show()
+
+graficar_entrenamiento(history)
 
 # Evaluar el modelo
 test_loss, test_acc = model.evaluate(X_test, y_test)
