@@ -1,4 +1,5 @@
 import pandas as pd
+import plotly.express as px
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -8,7 +9,7 @@ from tensorflow.keras import layers, regularizers
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from sklearn.metrics import confusion_matrix, classification_report, f1_score, balanced_accuracy_score
-from imblearn.over_sampling import SMOTE
+from imblearn.over_sampling import SMOTE, ADASYN, RandomOverSampler
 import warnings
 import time
 from sklearn.model_selection import StratifiedKFold
@@ -77,14 +78,40 @@ print(correlations)
 # 4. Aplicar SMOTE para balancear clases
 # ==================================
 print("\nAplicando SMOTE para balancear clases...")
-smote = SMOTE(random_state=RANDOM_SEED)
-X_resampled, y_resampled = smote.fit_resample(X, y)
 
+def graficar_distribucion(y, titulo):
+    clases = pd.Series(y).value_counts().reset_index()
+    clases.columns = ['Clase', 'Cantidad']
+
+    fig = px.bar(clases, x='Clase', y='Cantidad', 
+                 title=titulo, 
+                 labels={'Cantidad': 'Número de muestras', 'Clase': 'Clase'})
+    fig.show()
+
+def aplicar_balanceo(X, y, tecnica='none'):
+    if tecnica == 'smote':
+        sampler = SMOTE(random_state=RANDOM_SEED)
+    elif tecnica == 'adasyn':
+        sampler = ADASYN(random_state=RANDOM_SEED)
+    elif tecnica == 'random':
+        sampler = RandomOverSampler(random_state=RANDOM_SEED)
+    else:
+        print("Sin balanceo aplicado.")
+        return X, y  # No se aplica balanceo
+
+    x_resampled, y_resampled = sampler.fit_resample(X, y)
+    print(f"Distribución de clases después de {tecnica.upper()}:")
+    print(pd.Series(y_resampled).value_counts())
+    graficar_distribucion(y_resampled, f"Distribución de Clases Después de {tecnica.upper()}")
+    
+    return x_resampled, y_resampled
+
+tecnica_balanceo = 'smote'  # Opciones: 'none', 'smote', 'adasyn', 'random'
+X_resampled, y_resampled = aplicar_balanceo(X, y, tecnica_balanceo)
 print("Distribución original de clases:")
 print(pd.Series(y).value_counts())
 print("Distribución después de SMOTE:")
 print(pd.Series(y_resampled).value_counts())
-
 # ==================================
 # 5. Convertir a numpy arrays y dividir datos
 # ==================================
