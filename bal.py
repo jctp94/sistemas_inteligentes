@@ -14,6 +14,10 @@ import time
 import copy
 warnings.filterwarnings('ignore')
 
+# Fuzzy logic imports
+import skfuzzy as fuzz
+from skfuzzy import control as ctrl
+
 # Semilla para reproducibilidad
 RANDOM_SEED = 42
 np.random.seed(RANDOM_SEED)
@@ -116,6 +120,55 @@ print(f"Dimensiones del conjunto de entrenamiento: {X_train.shape}")
 print(f"Distribución de clases en entrenamiento: {np.unique(y_train, return_counts=True)}")
 print(f"Dimensiones del conjunto de prueba: {X_test.shape}")
 print(f"Distribución de clases en prueba: {np.unique(y_test, return_counts=True)}")
+
+# ================================== #
+# 5B. Sistema de Lógica Difusa       #
+# ================================== #
+print("\nConstruyendo sistema de inferencia difusa para predicción de congestión...")
+
+# Creamos variables difusas para dos variables relevantes del dataset
+speed_range = np.linspace(0, 1, 100)  # Normalizado
+occupancy_range = np.linspace(0, 1, 100)
+congestion_range = np.linspace(0, 100, 100)
+
+velocidad = ctrl.Antecedent(speed_range, 'velocidad')
+ocupacion = ctrl.Antecedent(occupancy_range, 'ocupacion')
+congestion = ctrl.Consequent(congestion_range, 'congestion')
+
+# Definir funciones de membresía
+velocidad['baja'] = fuzz.trimf(velocidad.universe, [0, 0, 0.4])
+velocidad['media'] = fuzz.trimf(velocidad.universe, [0.3, 0.5, 0.7])
+velocidad['alta'] = fuzz.trimf(velocidad.universe, [0.6, 1.0, 1.0])
+
+ocupacion['baja'] = fuzz.trimf(ocupacion.universe, [0, 0, 0.4])
+ocupacion['media'] = fuzz.trimf(ocupacion.universe, [0.3, 0.5, 0.7])
+ocupacion['alta'] = fuzz.trimf(ocupacion.universe, [0.6, 1.0, 1.0])
+
+congestion['bajo'] = fuzz.trimf(congestion.universe, [0, 0, 30])
+congestion['medio'] = fuzz.trimf(congestion.universe, [20, 50, 80])
+congestion['alto'] = fuzz.trimf(congestion.universe, [70, 100, 100])
+
+# Reglas
+reglas = [
+    ctrl.Rule(velocidad['baja'] & ocupacion['alta'], congestion['alto']),
+    ctrl.Rule(velocidad['media'] & ocupacion['media'], congestion['medio']),
+    ctrl.Rule(velocidad['alta'] & ocupacion['baja'], congestion['bajo']),
+    ctrl.Rule(velocidad['alta'] & ocupacion['media'], congestion['medio']),
+    ctrl.Rule(velocidad['media'] & ocupacion['alta'], congestion['alto']),
+]
+
+sistema_ctrl = ctrl.ControlSystem(reglas)
+sistema_simulacion = ctrl.ControlSystemSimulation(sistema_ctrl)
+
+# Simular un ejemplo con datos del dataset
+example_speed = X.iloc[0]['Traffic_Speed_kmh']
+example_occupancy = X.iloc[0]['Road_Occupancy_%']
+sistema_simulacion.input['velocidad'] = example_speed
+sistema_simulacion.input['ocupacion'] = example_occupancy
+sistema_simulacion.compute()
+
+print(f"Ejemplo - Velocidad: {example_speed:.2f}, Ocupación: {example_occupancy:.2f}")
+print(f"Predicción difusa de congestión: {sistema_simulacion.output['congestion']:.2f}/100")
 
 # ==================================
 # 6. Definición de posibles componentes para arquitecturas de redes neuronales
@@ -514,7 +567,7 @@ def train_optimal_model(architecture, X_train, y_train, X_test, y_test):
     # Entrenar con early stopping
     history = model.fit(
         X_train, y_train,
-        epochs=100,
+        epochs=50,
         batch_size=architecture['batch_size'],
         validation_split=0.2,
         verbose=1,
