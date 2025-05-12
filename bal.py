@@ -550,14 +550,14 @@ def train_optimal_model(architecture, X_train, y_train, X_test, y_test):
 # ==================================
 print("\nIniciando optimización de arquitectura de red...")
 ga_arch = GeneticArchitectureOptimizer(
-    population_size=10,  # Población menor para mayor eficiencia
+    population_size=50,  # Población menor para mayor eficiencia
     elite_ratio=0.2,
     input_shape=(X_train.shape[1],),
     num_classes=len(np.unique(y))
 )
 
 # Ejecutar por menos generaciones para demo
-ga_results = ga_arch.run(generations=10)  # Ajustar según recursos disponibles
+ga_results = ga_arch.run(generations=50)  # Ajustar según recursos disponibles
 
 # ==================================
 # 10. Entrenar y evaluar el modelo óptimo
