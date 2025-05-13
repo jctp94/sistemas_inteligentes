@@ -1,0 +1,34 @@
+=== MÉTRICAS SISTEMA DIFUSO ===
+Matriz de confusión:
+[[1975 1191    0]
+ [ 548 1664  954]
+ [ 324  938 1904]]
+
+Reporte de clasificación:
+              precision    recall  f1-score   support
+
+         Low       0.69      0.62      0.66      3166
+      Medium       0.44      0.53      0.48      3166
+        High       0.67      0.60      0.63      3166
+
+    accuracy                           0.58      9498
+   macro avg       0.60      0.58      0.59      9498
+weighted avg       0.60      0.58      0.59      9498
+
+
+=== MÉTRICAS CLOUD MODEL ===
+Matriz de confusión:
+[[ 809 1804  553]
+ [ 768 1136 1262]
+ [ 629  851 1686]]
+
+Reporte de clasificación:
+              precision    recall  f1-score   support
+
+         Low       0.37      0.26      0.30      3166
+      Medium       0.30      0.36      0.33      3166
+        High       0.48      0.53      0.51      3166
+
+    accuracy                           0.38      9498
+   macro avg       0.38      0.38      0.38      9498
+weighted avg       0.38      0.38      0.38      9498
