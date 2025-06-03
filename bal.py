@@ -43,7 +43,7 @@ df_clean['Hour'] = df_clean['Timestamp'].dt.hour
 df_clean['Day_of_Week'] = df_clean['Timestamp'].dt.dayofweek
 df_clean['Is_Weekend'] = (df_clean['Day_of_Week'] >= 5).astype(int)
 df_clean['Is_Rush_Hour'] = ((df_clean['Hour'] >= 7) & (df_clean['Hour'] <= 9) | 
-                          (df_clean['Hour'] >= 16) & (df_clean['Hour'] <= 19)).astype(int)
+(df_clean['Hour'] >= 16) & (df_clean['Hour'] <= 19)).astype(int)
 
 # Normalizar variables numéricas
 numeric_cols = ['Vehicle_Count', 'Traffic_Speed_kmh', 'Road_Occupancy_%', 
