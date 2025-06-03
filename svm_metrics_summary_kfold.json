@@ -1,0 +1,14 @@
+{
+    "test_accuracy": 0.898,
+    "test_f1_macro": 0.8689259562356623,
+    "test_f1_weighted": 0.8985443382599436,
+    "cv_accuracy_mean": 0.9012499999999999,
+    "cv_accuracy_std": 0.013110110602126886,
+    "cv_f1_macro_mean": 0.8584268790432905,
+    "cv_f1_macro_std": 0.020921880527092374,
+    "best_params": {
+        "svm__C": 100,
+        "svm__gamma": 0.01
+    },
+    "n_splits": 5
+}
