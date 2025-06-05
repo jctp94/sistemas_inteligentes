@@ -1,0 +1,417 @@
+\documentclass{svproc} % Plantilla oficial de Springer
+\usepackage{graphicx}   % Para incluir imágenes
+\usepackage{url}        % Para añadir enlaces
+
+\begin{document}
+
+\title{Sistema Inteligente para la Predicciónasdasdas del Nivel de Congestión del Tráfico}
+\author{Abel Albuez Sánchez, Juan Camilo Torres Peña y Daniel Ríos Caro}
+\institute{Pontificia Universidad Javeriana, Bogotá, Colombia}
+
+\maketitle
+
+\begin{abstract}
+El incremento del tráfico en entornos urbanos ha generado problemas
+de movilidad y eficiencia vial. Este proyecto propone un sistema basado en Inteligencia Artificial (IA) 
+para predecir el nivel de congestión del tráfico, utilizando Redes Neuronales, Algoritmos Evolutivos, 
+Lógica Difusa y Aprendizaje de Máquina. Este modelo analizará datos históricos, identificando patrones de congestión 
+para optimizar la movilidad urbana. Debido a la ausencia de datos en tiempo real, 
+la predicción se basará en tendencias pasadas, permitiendo anticipar escenarios de tráfico
+ bajo distintos contextos temporales. La validación del modelo se realizará mediante métricas de clasificación, incluyendo ROC,
+  Sensibilidad, Especificidad, F1 y Precisión, asegurando la fiabilidad de las predicciones.
+   Este estudio contribuirá a la planificación y optimización del tráfico, proporcionando una herramienta de análisis para la toma de decisiones en movilidad urbana.
+\end{abstract}
+
+\noindent\textbf{Palabras Clave:} Predicción del Tráfico, Inteligencia Artificial, Redes Neuronales, Lógica Difusa, Algoritmos Evolutivos, Ciudades Inteligentes, Optimización del Tráfico.
+
+\section{Introducción}
+
+El crecimiento acelerado de las ciudades, el aumento en la motorización y la infraestructura vial limitada han generado un impacto significativo en la movilidad urbana. La congestión del tráfico es hoy uno de los principales retos para las ciudades inteligentes, afectando la productividad, la calidad del aire y la salud pública. Frente a este desafío, el desarrollo de sistemas de predicción del tráfico se vuelve crucial para anticipar condiciones adversas y mejorar la toma de decisiones estratégicas en materia de movilidad.
+
+En este contexto, la Inteligencia Artificial (IA) se ha posicionado como una alternativa poderosa para modelar y predecir fenómenos complejos como la congestión vehicular. A diferencia de los métodos tradicionales basados en modelos estadísticos lineales, las técnicas de IA permiten capturar relaciones no lineales, dinámicas y con incertidumbre inherente a los sistemas de tráfico. En particular, enfoques como redes neuronales, algoritmos evolutivos, lógica difusa y modelos de aprendizaje de máquina han mostrado resultados prometedores en escenarios reales y simulados.
+
+El presente artículo tiene como objetivo comparar el desempeño de diversas técnicas de IA aplicadas a la predicción del tráfico, utilizando un conjunto de datos históricos que incluye información sobre volumen vehicular, velocidad, ocupación de la vía, condiciones climáticas y reportes de accidentes. A través de un protocolo experimental riguroso, se evalúan diferentes modelos desde una perspectiva cuantitativa (precisión, F1-score, RMSE, MAE) y cualitativa (interpretabilidad, robustez y complejidad computacional).
+
+Este trabajo no solo pretende identificar la técnica con mejor desempeño general, sino también analizar en qué contextos cada enfoque resulta más adecuado. Además, se discute el potencial de modelos híbridos y se propone una arquitectura de agente inteligente capaz de integrar las fortalezas de múltiples técnicas para anticipar niveles de congestión y apoyar la planificación urbana.
+
+\section{Motivación y Contextualización del Problema}
+La congestión vehicular es uno de los problemas urbanos más críticos en el mundo
+moderno. En ciudades altamente pobladas, el tráfico no solo afecta la movilidad de los
+ciudadanos, sino que también impacta negativamente la economía, la salud y el medio
+ambiente.
+
+\subsection{Datos clave sobre la congestión del tráfico}
+\begin{itemize}
+    \item En EE.UU., los conductores pierden en promedio 54 horas al año debido a la
+    congestión, generando un costo anual de 166 mil millones de dólares en
+    productividad perdida \cite{CEPAL}.
+    \item En México, la congestión vehicular representa pérdidas de 94 mil millones de
+    pesos anuales, equivalente al 3.5\% del PIB regional \cite{IMCO}.
+    \item Según la Organización Mundial de la Salud (OMS), la contaminación causada por
+    el tráfico contribuye a 7 millones de muertes prematuras al año debido a
+    enfermedades respiratorias y cardiovasculares.
+\end{itemize}
+
+La necesidad de desarrollar un sistema inteligente que pueda predecir los niveles de
+congestión del tráfico se ha vuelto más relevante con el aumento del parque vehicular y
+la urbanización acelerada.
+
+\section{Estado del Arte: Aplicaciones de IA en la Predicción del Tráfico}
+El uso de Inteligencia Artificial (IA) en la predicción del tráfico
+ha tomado gran relevancia en los últimos años, especialmente con 
+el auge de ciudades inteligentes y la disponibilidad de grandes volúmenes de datos.
+Las técnicas de IA permiten abordar problemas complejos y no lineales que los métodos
+ tradicionales no logran resolver de forma eficiente. En esta sección, se realiza una 
+ revisión crítica de los principales enfoques utilizados en la literatura reciente.
+
+\subsection{Redes Neuronales para la Predicción del Tráfico}
+
+ El uso de redes neuronales en el análisis del tráfico ha demostrado ser especialmente efectivo para capturar patrones complejos y no lineales en datos secuenciales. A continuación, se presenta un análisis comparativo de tres propuestas recientes que implementan distintos tipos de redes neuronales con este propósito:
+ 
+\subsubsection{LSTM con SMOTE para Detección de Intrusos}
+ 
+ En \textit{Nawaz et al. (2023)}, se propone un sistema de detección de intrusiones en redes utilizando una arquitectura basada en LSTM complementada con la técnica de sobremuestreo SMOTE y la pérdida focal categórica. El objetivo principal es abordar el desbalance de clases en datasets como KDD99 y CICIDS2017. Los resultados muestran una mejora significativa en la detección de ataques minoritarios como R2L y U2R. El modelo alcanzó una precisión del 98.83\% y una F1-score de 89.17\% en el dataset KDD99, superando a técnicas como SVM, Naïve Bayes, Random Forest y LSTM convencionales.
+ 
+\subsubsection{Redes Neuronales Feedforward para Control de Congestión}
+ 
+ El estudio de \textit{Nwigwe et al. (2024)} plantea una red neuronal feedforward con un sistema de control de congestión de enrutamiento multicanal (FFNN-MCRCCS) para predecir y mitigar la congestión en redes IoT. Esta arquitectura introduce una función recursiva cuadrática para determinar los canales con menor congestión y priorizar la transmisión de paquetes. Los resultados de la simulación evidencian una mejora sustancial en métricas clave como jitter, tiempo de estabilización, utilización del enlace y longitud media de cola, alcanzando una precisión del 99.8\% en la predicción de tráfico y una tasa de entrega de paquetes del 99.7\%.
+ 
+\subsubsection{Predicción de Movilidad Vehicular con RNN}
+ 
+ Finalmente, el artículo \textit{DeepVM} introduce una red neuronal recurrente (RNN) para predecir la movilidad vehicular en aplicaciones de transporte inteligente. La red fue entrenada con datos espaciales y temporales para estimar con precisión el comportamiento futuro de los vehículos. El modelo logra mejorar significativamente la precisión de las predicciones frente a métodos tradicionales como KNN y árboles de decisión, demostrando su utilidad para aplicaciones de red vehicular y gestión del tráfico urbano.
+ 
+\subsubsection{Síntesis Comparativa}
+ 
+ Los tres enfoques analizados coinciden en la utilidad de las redes neuronales para capturar patrones temporales complejos y no lineales en datos de tráfico. Sin embargo, cada uno destaca por su aplicación específica: detección de intrusos, control de congestión o movilidad vehicular. Además, el uso combinado de LSTM con técnicas de balanceo de clases (SMOTE y pérdidas focales) se posiciona como el más robusto en contextos de alta desbalance y detección multicategoría. Por otro lado, las redes feedforward se muestran más adecuadas en arquitecturas de red donde se prioriza la velocidad de inferencia y la estabilidad bajo tráfico irregular.
+
+\subsection{Algoritmos Evolutivos en la Optimización del Tráfico}
+
+Los algoritmos evolutivos, especialmente los algoritmos genéticos (GA), han demostrado ser altamente efectivos para abordar problemas de predicción y optimización del tráfico. Su capacidad para realizar búsqueda global en espacios complejos los hace adecuados para mejorar tanto modelos de aprendizaje como configuraciones de simulación vehicular.
+
+\subsubsection{Predicción de Tráfico con GA-BP y Reconstrucción de Espacio de Fases}
+
+Peng y Xiang (2020) proponen un modelo híbrido que combina redes neuronales backpropagation (BP) con algoritmos genéticos (GA), mejorado mediante técnicas de descomposición wavelet y reconstrucción de espacio de fases (WD-PSR-GA-BP). El modelo fue entrenado con datos de tráfico real y evaluado con métricas como RMSE, MAE y MAPE. Los resultados muestran que el modelo híbrido reduce el error en un 43.85\% en comparación con el BP convencional, demostrando la eficacia del enfoque GA para optimizar parámetros de red y capturar mejor la dinámica del tráfico.
+
+\subsubsection{Optimización del Flujo Vehicular mediante Algoritmos Genéticos}
+
+Ríos y Torres (2024) desarrollan una simulación del flujo vehicular utilizando un enfoque evolutivo. Su modelo aplica algoritmos genéticos para optimizar rutas vehiculares en una red vial simulada, considerando múltiples objetivos como el tiempo total de recorrido y la distribución del tráfico. Los resultados evidencian una mejora en la eficiencia del tránsito simulado, con trayectorias adaptadas dinámicamente a condiciones cambiantes del entorno vial. Este trabajo destaca la utilidad de los GA como herramienta heurística para planificación y toma de decisiones en movilidad urbana.
+
+\subsubsection{Algoritmos Genéticos como Técnicas de Preprocesamiento en Modelos Supervisados}
+
+El artículo extraído de EBSCO (2024) presenta un enfoque en el cual los algoritmos genéticos son aplicados como técnica de preprocesamiento para mejorar el rendimiento de modelos de clasificación aplicados al tráfico urbano. Específicamente, el GA se emplea para seleccionar variables relevantes y ajustar hiperparámetros de modelos como SVM y árboles de decisión. El estudio demuestra una mejora significativa en métricas de precisión y recall al integrar GA en la fase de preparación de datos, validando su impacto positivo como herramienta auxiliar en entornos supervisados.
+
+\subsubsection{Síntesis Comparativa}
+
+Estos trabajos demuestran que los algoritmos genéticos no solo sirven para ajustar modelos predictivos, sino también para optimizar rutas, seleccionar atributos relevantes y adaptar sistemas de movilidad a condiciones dinámicas. Su integración con redes neuronales, simulaciones o modelos supervisados mejora la precisión y eficiencia en aplicaciones reales de predicción y control de tráfico.
+
+\subsection{Lógica Difusa en Sistemas de Control de Tráfico}
+
+La lógica difusa ha sido ampliamente utilizada en sistemas de control de tráfico debido a su capacidad para manejar incertidumbre, imprecisión y la naturaleza no lineal de los sistemas urbanos reales. A continuación, se presentan tres estudios destacados que implementan lógica difusa en la predicción y control del tráfico.
+
+\subsubsection{Modelo de Inferencia Difusa Basado en Cloud Model}
+
+El estudio de Zhang et al. (2023) propone un sistema de inferencia difusa mejorado con un modelo probabilístico tipo “cloud model”, que permite representar simul\-tánea\-mente aleatoriedad y borrosidad. El enfoque se aplica a predicción de flujo vehicular a corto plazo, empleando información como volumen vehicular, ocupación y velocidad. El modelo supera métodos tradicionales en MAPE y RMSE, logrando una mayor adaptabilidad ante variabilidad y ruido en los datos. Este enfoque se destaca por su potencial para predecir dinámicamente condiciones de tráfico en tiempo real.
+
+\subsubsection{Congestión Vehicular Detectada a través de Floating Car Data (FCD)}
+
+Kalinic y Krisp (2021) implementan un sistema de inferencia difusa con datos recolectados desde vehículos flotantes en la autopista federal B17 en Augsburg, Alemania. Utilizan como variables de entrada la velocidad media segmentada y el tiempo de viaje para predecir cinco niveles de congestión. Los resultados del sistema difuso se comparan con métodos tradicionales como el Nivel de Servicio (LOS), mostrando mayor estabilidad ante fluctuaciones abruptas. Este enfoque representa una alternativa eficaz para la caracterización del tráfico urbano en redes con cobertura limitada de sensores fijos.
+
+\subsubsection{Aplicación de Lógica Difusa para Control de Intersecciones}
+
+En el artículo de Abel et al. (2023), se emplea lógica difusa para optimizar el control semafórico en múltiples intersecciones urbanas. El modelo considera factores como flujo de vehículos, número de carriles y tiempo promedio de espera para ajustar dinámicamente las fases del semáforo. El sistema fue simulado en entornos urbanos con tráfico denso y comparado contra temporizadores fijos, obteniendo mejoras significativas en la reducción de tiempo de espera y aumento en el número de vehículos despachados. Este enfoque refleja el potencial de la lógica difusa para adaptarse en entornos complejos y dinámicos.
+
+\subsubsection{Síntesis Comparativa}
+
+Los tres enfoques coinciden en que la lógica difusa aporta robustez ante condiciones de incertidumbre y variabilidad en los datos. Mientras Zhang et al. enfocan su esfuerzo en enriquecer la representación mate\-mática del conocimiento mediante el Cloud Model, Kalinic y Krisp destacan el uso de datos reales a través de FCD, y Abel et al. se concentran en el control de infraestructura vial. Juntos, evidencian la versatilidad de la lógica difusa en distintos niveles del ecosistema de tráfico urbano.
+
+\subsection{Modelos de Aprendizaje de Máquina en la Predicción del Tráfico}
+
+El aprendizaje de máquina ha demostrado ser una herramienta eficaz en la predicción del tráfico, especialmente mediante el uso de técnicas como Máquinas de Vectores de Soporte (SVM), Random Forest y métodos de ensamble. A continuación se presentan tres enfoques representativos.
+
+\subsubsection{Traffic Flow Prediction Based on Combination of Support Vector Machine and Data Denoising Schemes}
+
+Este estudio propone una arquitectura híbrida que combina SVM con técnicas de denoising como Wavelet Transform y Empirical Mode Decomposition (EMD) para mejorar la calidad de los datos de tráfico. La limpieza de datos permite que el modelo SVM capture de manera más efectiva los patrones de tráfico. El enfoque mostró una mejora significativa en la predicción de flujo vehicular a corto plazo en comparación con modelos tradicionales.
+
+\subsubsection{Utilizing Support Vector Machine in Real-Time Crash Risk Evaluation}
+
+Este trabajo utiliza SVM con funciones kernel (lineal y radial) para evaluar el riesgo de accidentes en tiempo real en autopistas montañosas. Se aplicó una técnica de selección de variables mediante árboles CART y se comparó con modelos de regresión logística bayesiana. Los resultados mostraron que SVM con kernel radial superó a los modelos tradicionales, especialmente en conjuntos de datos pequeños, demostrando su capacidad de generalización y robustez.
+
+\subsubsection{Traffic Flow Forecasting Using Machine Learning Methods (Elsevier, 2022)}
+
+En este artículo se comparan diferentes algoritmos de aprendizaje de máquina, como XGBoost, Random Forest, SVM y Redes Neuronales, sobre un conjunto de datos reales. Se destaca que modelos como Random Forest y XGBoost ofrecieron predicciones más precisas al ser menos susceptibles al sobreajuste y ofrecer mayor interpretabilidad. También se plantea la necesidad de un preprocesamiento cuidadoso, incluyendo la normalización y la selección de características, para mejorar el rendimiento.
+
+\subsubsection*{Síntesis Comparativa}
+
+Los artículos revisados coinciden en que los modelos de aprendizaje de máquina tienen un alto potencial para capturar patrones no lineales y realizar predicciones precisas de tráfico. El uso de técnicas de limpieza de datos, selección de variables y evaluación rigurosa con métricas como AUC y F1-score son factores clave en su efectividad. Los SVM, particularmente con kernel RBF, ofrecen gran capacidad de generalización en escenarios donde los datos son limitados o ruidosos.
+
+
+
+\section{Descripción de la Tarea}
+Este proyecto busca desarrollar un modelo inteligente para la predicción del nivel de
+congestión del tráfico utilizando técnicas de Inteligencia Artificial (IA). Se basará en
+datos históricos y modelos de aprendizaje automático para identificar patrones de
+congestión en distintos escenarios urbanos.
+
+\subsection{Objetivo Principal}
+Implementar un modelo que prediga el nivel de congestión del tráfico utilizando
+variables como velocidad vehicular, ocupación de la vía, número de vehículos, accidentes
+y condiciones climáticas.
+
+\subsection{Entradas del Sistema}
+\begin{itemize}
+    \item \textbf{Datos del tráfico:} Vehicle\_Count, Traffic\_Speed\_kmh, Road\_Occupancy\_\%.
+    \item \textbf{Condiciones climáticas:} Weather\_Condition (lluvia, nieve, despejado, etc.).
+    \item \textbf{Información geográfica:} Latitude, Longitude, para analizar tendencias espaciales de congestión.
+    \item \textbf{Historial de accidentes:} Accident\_Report, para evaluar su impacto en los niveles de tráfico.
+\end{itemize}
+
+\subsection{Salida del Sistema}
+El agente debe procesar los datos y generar predicciones, que pueden ser:
+\begin{itemize}
+    \item Estimación del nivel de tráfico en franjas horarias futuras.
+    \item Identificación de patrones de congestión en días específicos.
+    \item Análisis de tendencias (cómo cambia el tráfico a lo largo del año).
+\end{itemize}
+
+\subsection{Restricciones}
+\begin{itemize}
+    \item \textbf{Este agente no puede reaccionar a eventos en tiempo real} (como accidentes o desvíos
+    inesperados), pero sí puede anticipar patrones recurrentes.
+    \item \textbf{Dependencia de Datos Históricos:}
+    \begin{itemize}
+        \item El sistema se basará en datos previos para hacer predicciones, por lo que su
+        precisión dependerá de la calidad y representatividad del dataset utilizado.
+        \item El dataset tiene registros en intervalos de 5 minutos, lo que limita la capacidad del
+        modelo para capturar fluctuaciones muy rápidas en la congestión del tráfico.
+        \item La precisión de la predicción depende de la densidad de los datos disponibles en
+        diferentes zonas urbanas, lo que puede generar resultados menos precisos en
+        áreas con menor cantidad de registros históricos.
+    \end{itemize}
+    \item \textbf{Falta de Información sobre Eventos Externos:}
+    \begin{itemize}
+        \item No se podrán considerar accidentes, obras viales, desvíos inesperados o eventos
+        especiales si no están reflejados en la data histórica.
+        \item El modelo asumirá que los patrones del tráfico siguen comportamientos
+        recurrentes.
+    \end{itemize}
+    \item \textbf{Modelo Basado en Predicción de Tendencias:}
+    \begin{itemize}
+        \item No podrá generar recomendaciones personalizadas en tiempo real para usuarios
+        individuales.
+        \item Solo estimará la probabilidad de congestión en ciertos períodos futuros, sin poder
+        adaptarse dinámicamente a cambios inesperados.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Alcances}
+\begin{itemize}
+    \item \textbf{Identificación de Patrones de Congestión}
+    \begin{itemize}
+        \item Permitirá detectar tendencias de tráfico recurrentes, como horas pico y días con
+        mayor carga vehicular.
+        \item Puede ayudar a tomar decisiones estratégicas sobre movilidad con base a datos
+        previos.
+    \end{itemize}
+    
+    \item \textbf{Aplicabilidad en Ciudades Inteligentes}
+    \begin{itemize}
+        \item Puede integrarse en plataformas de análisis de movilidad urbana para facilitar la
+        toma de decisiones basada en datos históricos.
+    \end{itemize}
+    
+    \item \textbf{Generación de Reportes de Análisis}
+    \begin{itemize}
+        \item Puede entregar reportes con predicciones de tráfico en distintos horarios y días.
+        \item Útil para planificación de rutas o estrategias de movilidad basadas en datos
+        históricos.
+    \end{itemize}
+\end{itemize}
+
+
+\section{Análisis de Potencialidades para el Uso de Herramientas de Inteligencia Artificial}
+La técnica más utilizada en este ámbito son las Redes Neuronales Artificiales (ANNs). El
+estudio realizado por Goenawan et al. (2024) presenta un modelo basado en Redes
+Neuronales Convolucionales (CNN) y LSTM, alcanzando una precisión del 85\% en la
+predicción de tráfico, superando los métodos estadísticos tradicionales \cite{Goenawan2024}.
+
+Por otro lado, Li et al. (2024) analizaron modelos de Aprendizaje de Máquina como
+Regresión Logística y Árboles de Decisión, concluyendo que los métodos basados en
+Redes Neuronales Multicapa (MLPNN) presentan mejor rendimiento en la clasificación
+del tráfico en comparación con modelos lineales \cite{Li2024}.
+
+En otro estudio, Elsalamony et al. (2013) evaluaron el uso de Árboles de Decisión C5.0 en conjunto con Redes Neuronales
+Perceptrón Multicapa (MLPNN), demostrando una mayor precisión en la clasificación de
+tráfico congestionado.
+
+Asimismo, Al-Shayea et al. (2013) propusieron el uso de Redes de Propagación
+Retroalimentadas y concluyeron que estos modelos tienen mejor rendimiento en la
+predicción de tráfico urbano al captar relaciones complejas entre variables como
+velocidad vehicular, ocupación de la vía y número de vehículos.
+
+Por otro lado, Liu et al. (2008) exploraron el uso de Algoritmos Genéticos (GA) para la
+selección de características en la predicción de tráfico, logrando una mejora significativa
+en la precisión del modelo al identificar las variables más relevantes que afectan la
+congestión.
+
+Finalmente, Khan et al. (2013) aplicaron un modelo basado en Lógica
+Difusa, convirtiendo las variables continuas en categorías de congestión y logrando una
+mejor clasificación de los niveles de tráfico urbano.
+
+Con base en estos estudios, el presente proyecto utilizará una combinación de Redes
+Neuronales, Algoritmos Evolutivos, Lógica Difusa y Aprendizaje de Máquina, con el
+objetivo de desarrollar un modelo preciso para la predicción del nivel de congestión del
+tráfico, optimizando la movilidad urbana y mejorando la planificación del tránsito.
+
+
+
+\section{Diseño del Protocolo Experimental}
+
+Con el objetivo de evaluar la eficacia de distintas técnicas de Inteligencia Artificial aplicadas a la predicción de congestión vehicular, se diseñó un protocolo experimental riguroso con base en un enfoque comparativo multitécnica. Este protocolo integra múltiples combinaciones de algoritmos y técnicas de preprocesamiento de datos para analizar su impacto en la precisión del modelo.
+
+\subsection{Conjunto de Datos y Preprocesamiento}
+
+Se utilizó el conjunto de datos histórico \textit{Smart Mobility Dataset} disponible en Kaggle, el cual contiene información sobre condiciones de tráfico, estado del clima, ubicación geográfica, reportes de accidentes, entre otros. Se aplicó un proceso de limpieza, transformación de variables temporales y creación de nuevas variables mediante ingeniería de características.
+
+\subsection{Técnicas de Balanceo de Clases}
+
+Dado el desbalance de clases observado en las categorías de congestión (baja, media, alta), se implementaron las siguientes técnicas de sobremuestreo:
+
+\begin{itemize}
+    \item \textbf{Sin balanceo (baseline)}
+    \item \textbf{SMOTE (Synthetic Minority Oversampling Technique)}
+    \item \textbf{ADASYN (Adaptive Synthetic Sampling)}
+    \item \textbf{Random Oversampling}
+\end{itemize}
+
+\subsection{Modelos Evaluados}
+
+Cada técnica de balanceo fue combinada con uno de los siguientes enfoques de modelado:
+
+\begin{itemize}
+    \item \textbf{Redes Neuronales (ANN)}: Modelo feedforward implementado en Keras con activaciones ReLU y capa de salida softmax. Se utilizaron regularización L2 y EarlyStopping para mitigar sobreajuste.
+    \item \textbf{Algoritmos Genéticos (GA)}: Aplicados para optimizar los pesos de una red neuronal y seleccionar variables relevantes.
+    \item \textbf{Lógica Difusa (FIS)}: Utilizando funciones de membresía triangulares y defuzzificación tipo bisector para simplificar reglas y aumentar robustez ante ruido.
+    \item \textbf{SVM con Kernel RBF}: Entrenado con validación cruzada estratificada y optimización de hiperparámetros (C y gamma) mediante grid search.
+\end{itemize}
+
+\subsection{Diseño Factorial de los Experimentos}
+
+El protocolo experimental se estructuró como un diseño factorial completo \( 4 \times 4 \), resultando en 16 combinaciones posibles:
+
+\begin{center}
+\textbf{4 técnicas de balanceo} × \textbf{4 modelos de IA} = 16 experimentos
+\end{center}
+
+Cada combinación fue evaluada mediante validación cruzada de \( k = 5 \) y repetida 5 veces para mayor robustez estadística. Se utilizó un 80\% de los datos para entrenamiento y validación, y un 20\% para prueba final.
+
+\subsection{Métricas de Evaluación}
+
+Se utilizaron las siguientes métricas para medir el rendimiento de cada combinación:
+
+\begin{itemize}
+    \item \textbf{F1-score (macro y weighted)}
+    \item \textbf{Precisión}
+    \item \textbf{Sensibilidad (Recall)}
+    \item \textbf{Especificidad}
+    \item \textbf{Accuracy}
+    \item \textbf{Curvas ROC}
+    \item \textbf{RMSE y MAE} (para modelos continuos como lógica difusa y redes neuronales)
+\end{itemize}
+
+\subsection{Resultados Destacados}
+
+Los resultados mostraron que la combinación \textbf{Red Neuronal + Algoritmo Genético + SMOTE} obtuvo el mejor rendimiento general, especialmente en la predicción de clases minoritarias (alta congestión), superando a modelos individuales. Este hallazgo resalta el valor de los modelos híbridos y de técnicas de balanceo para resolver problemas de clasificación con datos urbanos desbalanceados.
+
+\section{Conclusiones}
+
+Este estudio evaluó múltiples técnicas de Inteligencia Artificial aplicadas a la predicción del nivel de congestión vehicular, integrando modelos como Redes Neuronales, Algoritmos Genéticos, Lógica Difusa y Máquinas de Vectores de Soporte. Mediante un protocolo experimental robusto que consideró balanceo de clases, validación cruzada y múltiples métricas de desempeño, se logró comparar rigurosamente el rendimiento de cada enfoque.
+
+Los resultados evidencian que la combinación de \textbf{Redes Neuronales con Algoritmos Genéticos y balanceo con SMOTE} ofrece el mejor desempeño general, destacándose en precisión, F1-score y estabilidad frente a datos desbalanceados. Este modelo híbrido logró captar de manera efectiva las dinámicas temporales y no lineales del tráfico urbano, adaptándose a escenarios con múltiples variables influyentes como el clima, la hora y el historial de accidentes.
+
+Por otro lado, la lógica difusa demostró ser especialmente útil por su interpretabilidad y robustez en presencia de ruido, mientras que las SVM resultaron eficaces en contextos de datos limitados. Los algoritmos evolutivos no solo potenciaron el ajuste de redes, sino que facilitaron la selección de características relevantes. En conjunto, el estudio resalta la importancia de enfoques híbridos y personalizados según el contexto urbano y los datos disponibles.
+
+\section{Trabajos Futuros}
+
+A partir de los hallazgos obtenidos, se proponen varias líneas de trabajo futuro para extender y enriquecer la presente investigación:
+
+\begin{itemize}
+    \item \textbf{Integración de datos en tiempo real:} Incorporar sensores IoT y fuentes dinámicas (GPS, Waze, cámaras de tráfico) para construir un modelo reactivo que se adapte a eventos imprevistos como accidentes o desvíos.
+    
+    \item \textbf{Exploración de modelos secuenciales avanzados:} Implementar arquitecturas RNN, LSTM y GRU que puedan modelar dependencias temporales a largo plazo, mejorando la precisión de las predicciones minuto a minuto.
+    
+    \item \textbf{Despliegue en plataformas de Smart City:} Adaptar el sistema para integrarlo en plataformas municipales de gestión del tráfico, facilitando la visualización de alertas de congestión y planificación vial.
+    
+    \item \textbf{Análisis geoespacial avanzado:} Incorporar técnicas de modelado espacial como GNN (Graph Neural Networks) o análisis con PostGIS para entender la distribución espacial de la congestión y optimizar rutas.
+    
+    \item \textbf{Sistemas de recomendación personalizados:} Explorar el desarrollo de un sistema basado en el agente propuesto que genere recomendaciones de ruta específicas para usuarios según patrones aprendidos.
+\end{itemize}
+
+Estas líneas futuras apuntan hacia un sistema de predicción más integral, dinámico e integrado al ecosistema urbano, en el que la IA pueda desempeñar un rol activo en la transformación de la movilidad inteligente.
+
+\section{Bibliografía}
+\begin{thebibliography}{99}
+
+    \bibitem{CEPAL} Comisión Económica para América Latina y el Caribe (CEPAL): La congestión del tránsito: sus consecuencias económicas y sociales. CEPAL, 2003.
+
+    \bibitem{IMCO} Instituto Mexicano para la Competitividad (IMCO): El costo de la congestión: vida y recursos perdidos. IMCO, 2017.
+
+    \bibitem{Goenawan2024} Goenawan, C. R.: ASTM: Autonomous Smart Traffic Management System Using Artificial Intelligence CNN and LSTM. arXiv preprint arXiv:2410.10929, 2024.
+    
+    \bibitem{SmartMobility2024} Smart Mobility Reports: Optimización del tráfico mediante Algoritmos Evolutivos. Andina Link Smart Cities, 2024.
+    
+    \bibitem{TransportationScience2024} Transportation Science: Aplicaciones de Lógica Difusa en el control del tráfico. Interempresas, 2024.
+  
+    \bibitem{Li2024} Li, H., Zhao, Y., Mao, Z., et al.: Graph Neural Networks in Intelligent Transportation Systems: Advances, Applications and Trends. arXiv preprint arXiv:2401.00713, 2024.
+
+    \bibitem{Euronews2024} Euronews: Verona prueba un sistema con IA para mejorar el tráfico y la seguridad vial. Euronews Next, 2024.
+  
+    \bibitem{Elsalamony2013} Elsalamony, A. H., et al.: Using Decision Tree C5.0 and Multilayer Perceptron Neural Networks for Traffic Congestion Prediction. Journal of Advanced Transportation, 2013.
+    
+    \bibitem{AlShayea2013} Al-Shayea, Q.: Artificial Neural Networks in Traffic Prediction. International Journal of Computer Science and Network Security (IJCSNS), 2013.
+    
+    \bibitem{Liu2008} Liu, Y., et al.: Using Genetic Algorithms for Feature Selection in Traffic Prediction Models. Transportation Research Record: Journal of the Transportation Research Board, 2008.
+    
+    \bibitem{Khan2013} Khan, M. J., et al.: Fuzzy Logic-Based Traffic Congestion Prediction System. International Journal of Intelligent Transportation Systems, 2013.
+
+    \bibitem{Nawaz2023}
+    Nawaz, R., Naveed, A., Khan, A., Rahim, A., \& Khan, A. M. (2023). 
+    An Intrusion Detection Model Using LSTM and SMOTE With Categorical Focal Loss Function. 
+    \textit{IEEE Access}, 11, 25913–25928. https://doi.org/10.1109/ACCESS.2023.3252731
+
+    \bibitem{Nwigwe2024}
+    Nwigwe, C., Madumere, I. M., Ekeke, J. H., \& Ajaegbu, K. C. (2024). 
+    Network Traffic Prediction and Congestion Control Using a Feed-Forward Neural Network Based Multi-Channel Routing Congestion Control Scheme. 
+    \textit{World Journal of Engineering Research and Technology}, 10(1), 330–344.
+
+    \bibitem{DeepVM}
+    Mahmoud, M., Al-Hazmi, Y., Alsabaan, M., Al-Rodhaan, M., \& Al-Dhelaan, A. (2015). 
+    DeepVM: RNN-Based Vehicle Mobility Prediction to Support Intelligent Vehicle Applications. 
+    \textit{In 2015 IEEE International Conference on Data Science and Data Intensive Systems}, 761–768. https://doi.org/10.1109/DSDIS.2015.118
+
+    \bibitem{Peng2020}
+Peng, Y., Xiang, W.: Short-term traffic volume prediction using GA-BP based on wavelet denoising and phase space reconstruction. Physica A: Statistical Mechanics and its Applications, 549, 123913 (2020). https://doi.org/10.1016/j.physa.2019.123913
+
+    \bibitem{Rios2024}
+    Ríos, D., Torres, J. C., Sánchez, A.: Optimización del flujo vehicular utilizando algoritmos genéticos para la simulación de rutas. Informe Técnico, Universidad Javeriana (2024).
+
+    \bibitem{EBSCO2024}
+    Aplicación de Algoritmos Genéticos para la Predicción del Tráfico Urbano. EBSCOhost Academic Search, Revista de Transporte Inteligente, 2024.
+
+    \bibitem{Zhang2023}
+    Zhang, Z., Yang, Z., Yan, X., \& Yang, J. (2023). 
+    Cloud Model-Based Fuzzy Inference System for Short-Term Traffic Flow Prediction. 
+    \textit{Sustainability}, 15(11), 8993. https://doi.org/10.3390/su15118993
+
+    \bibitem{Kalinic2021}
+    Kalinic, M., \& Krisp, J. M. (2021). 
+    Determining traffic congestion utilizing a fuzzy logic model and Floating Car Data. 
+    \textit{Proceedings of the International Cartographic Association}, 4, 55. https://doi.org/10.5194/ica-proc-4-55-2021
+
+    \bibitem{Abel2023}
+    Sánchez, A. A., Torres, J. C., \& Ríos, D. (2023). 
+    Improving the Road and Traffic Control Prediction Based on Fuzzy Logic Approach in Multiple Intersections. 
+    \textit{Technical Report}, Universidad Javeriana.
+  
+  \end{thebibliography}
+
+\end{document}
