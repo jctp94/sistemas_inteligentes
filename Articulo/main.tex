@@ -322,32 +322,6 @@ Se utilizaron las siguientes métricas para medir el rendimiento de cada combina
 
 Los resultados mostraron que la combinación \textbf{Red Neuronal + Algoritmo Genético + SMOTE} obtuvo el mejor rendimiento general, especialmente en la predicción de clases minoritarias (alta congestión), superando a modelos individuales. Este hallazgo resalta el valor de los modelos híbridos y de técnicas de balanceo para resolver problemas de clasificación con datos urbanos desbalanceados.
 
-\section{Conclusiones}
-
-Este estudio evaluó múltiples técnicas de Inteligencia Artificial aplicadas a la predicción del nivel de congestión vehicular, integrando modelos como Redes Neuronales, Algoritmos Genéticos, Lógica Difusa y Máquinas de Vectores de Soporte. Mediante un protocolo experimental robusto que consideró balanceo de clases, validación cruzada y múltiples métricas de desempeño, se logró comparar rigurosamente el rendimiento de cada enfoque.
-
-Los resultados evidencian que la combinación de \textbf{Redes Neuronales con Algoritmos Genéticos y balanceo con SMOTE} ofrece el mejor desempeño general, destacándose en precisión, F1-score y estabilidad frente a datos desbalanceados. Este modelo híbrido logró captar de manera efectiva las dinámicas temporales y no lineales del tráfico urbano, adaptándose a escenarios con múltiples variables influyentes como el clima, la hora y el historial de accidentes.
-
-Por otro lado, la lógica difusa demostró ser especialmente útil por su interpretabilidad y robustez en presencia de ruido, mientras que las SVM resultaron eficaces en contextos de datos limitados. Los algoritmos evolutivos no solo potenciaron el ajuste de redes, sino que facilitaron la selección de características relevantes. En conjunto, el estudio resalta la importancia de enfoques híbridos y personalizados según el contexto urbano y los datos disponibles.
-
-\section{Trabajos Futuros}
-
-A partir de los hallazgos obtenidos, se proponen varias líneas de trabajo futuro para extender y enriquecer la presente investigación:
-
-\begin{itemize}
-    \item \textbf{Integración de datos en tiempo real:} Incorporar sensores IoT y fuentes dinámicas (GPS, Waze, cámaras de tráfico) para construir un modelo reactivo que se adapte a eventos imprevistos como accidentes o desvíos.
-    
-    \item \textbf{Exploración de modelos secuenciales avanzados:} Implementar arquitecturas RNN, LSTM y GRU que puedan modelar dependencias temporales a largo plazo, mejorando la precisión de las predicciones minuto a minuto.
-    
-    \item \textbf{Despliegue en plataformas de Smart City:} Adaptar el sistema para integrarlo en plataformas municipales de gestión del tráfico, facilitando la visualización de alertas de congestión y planificación vial.
-    
-    \item \textbf{Análisis geoespacial avanzado:} Incorporar técnicas de modelado espacial como GNN (Graph Neural Networks) o análisis con PostGIS para entender la distribución espacial de la congestión y optimizar rutas.
-    
-    \item \textbf{Sistemas de recomendación personalizados:} Explorar el desarrollo de un sistema basado en el agente propuesto que genere recomendaciones de ruta específicas para usuarios según patrones aprendidos.
-\end{itemize}
-
-Estas líneas futuras apuntan hacia un sistema de predicción más integral, dinámico e integrado al ecosistema urbano, en el que la IA pueda desempeñar un rol activo en la transformación de la movilidad inteligente.
-
 \section{Discusión del Agente y su Inteligencia}
 
 \subsection{Análisis de las Propiedades del Agente}
@@ -469,6 +443,31 @@ Este trabajo contribuye al campo de la IA demostrando:
 
 El agente desarrollado representa un avance hacia sistemas de IA más completos, que no solo predicen, sino que comprenden, razonan y se adaptan al complejo entorno del tráfico urbano, sentando las bases para ciudades más inteligentes y eficientes.
 
+\section{Trabajos Futuros}
+
+A partir de los hallazgos obtenidos, se proponen varias líneas de trabajo futuro para extender y enriquecer la presente investigación:
+
+\begin{itemize}
+    \item \textbf{Integración de datos en tiempo real:} Incorporar sensores IoT y fuentes dinámicas (GPS, Waze, cámaras de tráfico) para construir un modelo reactivo que se adapte a eventos imprevistos como accidentes o desvíos.
+    
+    \item \textbf{Exploración de modelos secuenciales avanzados:} Implementar arquitecturas RNN, LSTM y GRU que puedan modelar dependencias temporales a largo plazo, mejorando la precisión de las predicciones minuto a minuto.
+    
+    \item \textbf{Despliegue en plataformas de Smart City:} Adaptar el sistema para integrarlo en plataformas municipales de gestión del tráfico, facilitando la visualización de alertas de congestión y planificación vial.
+    
+    \item \textbf{Análisis geoespacial avanzado:} Incorporar técnicas de modelado espacial como GNN (Graph Neural Networks) o análisis con PostGIS para entender la distribución espacial de la congestión y optimizar rutas.
+    
+    \item \textbf{Sistemas de recomendación personalizados:} Explorar el desarrollo de un sistema basado en el agente propuesto que genere recomendaciones de ruta específicas para usuarios según patrones aprendidos.
+\end{itemize}
+
+Estas líneas futuras apuntan hacia un sistema de predicción más integral, dinámico e integrado al ecosistema urbano, en el que la IA pueda desempeñar un rol activo en la transformación de la movilidad inteligente.
+
+\section{Conclusiones}
+
+Este estudio evaluó múltiples técnicas de Inteligencia Artificial aplicadas a la predicción del nivel de congestión vehicular, integrando modelos como Redes Neuronales, Algoritmos Genéticos, Lógica Difusa y Máquinas de Vectores de Soporte. Mediante un protocolo experimental robusto que consideró balanceo de clases, validación cruzada y múltiples métricas de desempeño, se logró comparar rigurosamente el rendimiento de cada enfoque.
+
+Los resultados evidencian que la combinación de \textbf{Redes Neuronales con Algoritmos Genéticos y balanceo con SMOTE} ofrece el mejor desempeño general, destacándose en precisión, F1-score y estabilidad frente a datos desbalanceados. Este modelo híbrido logró captar de manera efectiva las dinámicas temporales y no lineales del tráfico urbano, adaptándose a escenarios con múltiples variables influyentes como el clima, la hora y el historial de accidentes.
+
+Por otro lado, la lógica difusa demostró ser especialmente útil por su interpretabilidad y robustez en presencia de ruido, mientras que las SVM resultaron eficaces en contextos de datos limitados. Los algoritmos evolutivos no solo potenciaron el ajuste de redes, sino que facilitaron la selección de características relevantes. En conjunto, el estudio resalta la importancia de enfoques híbridos y personalizados según el contexto urbano y los datos disponibles.
 
 \section{Bibliografía}
 \begin{thebibliography}{99}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  6 JUN 2025 13:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  6 JUN 2025 13:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -259,65 +259,65 @@ Overfull \hbox (9.46043pt too wide) in paragraph at lines 246--250
 [9]
 
 [10{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Overfull \hbox (4.43265pt too wide) in paragraph at lines 329--330
-\OT1/cmr/m/n/10 tem-po-rales y no lin-eales del tr^^Safico ur-bano, adapt^^Sandose a es-ce-nar-ios con m^^Sultiples
- []
-
-
-
-[11]
-Overfull \hbox (6.8555pt too wide) in paragraph at lines 372--373
+Overfull \hbox (6.8555pt too wide) in paragraph at lines 346--347
 []\OT1/cmr/bx/n/10 Auto-optimizaci^^Son\OT1/cmr/m/n/10 : Los al-go-rit-mos gen^^Seticos per-miten que el sis-tema mejore
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--381
+Underfull \hbox (badness 10000) in paragraph at lines 354--355
 
  []
 
 
-Overfull \hbox (3.66798pt too wide) in paragraph at lines 381--382
+Overfull \hbox (3.66798pt too wide) in paragraph at lines 355--356
 []\OT1/cmr/bx/n/10 Sensores am-bi-en-tales\OT1/cmr/m/n/10 : Weather[]Condition, tem-per-atura impl^^S^^Pcita en condi-
  []
 
 
-Overfull \hbox (32.34999pt too wide) in paragraph at lines 382--383
+Overfull \hbox (32.34999pt too wide) in paragraph at lines 356--357
 []\OT1/cmr/bx/n/10 Sensores tem-po-rales\OT1/cmr/m/n/10 : Times-tamp proce-sado en Hour, Day[]of[]Week, Is[]Rush[]Hour 
  []
 
 
 
-[12]
+[11]
 
-[13]
-Overfull \hbox (8.39836pt too wide) in paragraph at lines 444--445
+[12]
+Overfull \hbox (8.39836pt too wide) in paragraph at lines 418--419
 []\OT1/cmr/bx/n/10 Agente basado en util-i-dad\OT1/cmr/m/n/10 : Bal-ancea m^^Sultiples ob-je-tivos (pre-cisi^^Son, tiempo,
  []
 
 
-Overfull \hbox (6.88327pt too wide) in paragraph at lines 467--468
+Overfull \hbox (6.88327pt too wide) in paragraph at lines 441--442
 []\OT1/cmr/bx/n/10 Arquitectura h^^S^^Pbrida\OT1/cmr/m/n/10 : Mod-elo para fu-turos sis-temas que re-quieran m^^Sultiples
  []
 
 
 
+[13]
+Overfull \hbox (4.43265pt too wide) in paragraph at lines 468--469
+\OT1/cmr/m/n/10 tem-po-rales y no lin-eales del tr^^Safico ur-bano, adapt^^Sandose a es-ce-nar-ios con m^^Sultiples
+ []
+
+
+
 [14]
-Underfull \hbox (badness 1490) in paragraph at lines 486--487
+Underfull \hbox (badness 1490) in paragraph at lines 485--486
 []\OT1/cmr/m/n/9 Li, H., Zhao, Y., Mao, Z., et al.: Graph Neu-ral Net-works in In-tel-li-gent
  []
 
 
-Underfull \hbox (badness 5008) in paragraph at lines 514--515
+Underfull \hbox (badness 5008) in paragraph at lines 513--514
 []\OT1/cmr/m/n/9 Peng, Y., Xi-ang, W.: Short-term traf-fic vol-ume pre-dic-tion us-ing GA-
  []
 
 
-Underfull \hbox (badness 4048) in paragraph at lines 514--515
+Underfull \hbox (badness 4048) in paragraph at lines 513--514
 \OT1/cmr/m/n/9 BP based on wavelet de-nois-ing and phase space re-con-struc-tion. Phys-
  []
 
 
-Underfull \hbox (badness 4391) in paragraph at lines 514--515
+Underfull \hbox (badness 4391) in paragraph at lines 513--514
 \OT1/cmr/m/n/9 ica A: Sta-tis-ti-cal Me-chan-ics and its Ap-pli-ca-tions, 549, 123913 (2020).
  []
 
@@ -340,7 +340,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,7n,65p,762b,317s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (16 pages, 186499 bytes).
+Output written on main.pdf (16 pages, 186446 bytes).
 PDF statistics:
  107 PDF objects out of 1000 (max. 8388607)
  68 compressed objects within 1 object stream

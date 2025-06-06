@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1749234593.44076 "/Users/jch/Repositories/maestria/sistemas_inteligentes/Articulo/main.tex" "main.pdf" "main" 1749234593.78357 0
-  "/Users/jch/Repositories/maestria/sistemas_inteligentes/Articulo/main.tex" 1749234592.85029 40795 44e26183ba93ae2bc750ea868edf5d9f ""
+["pdflatex"] 1749234841.01031 "/Users/jch/Repositories/maestria/sistemas_inteligentes/Articulo/main.tex" "main.pdf" "main" 1749234841.44181 0
+  "/Users/jch/Repositories/maestria/sistemas_inteligentes/Articulo/main.tex" 1749234840.06741 40794 2adc8c82a1a55bb6b0670767c5e512a7 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1741388039 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/fontname/texfonts.map" 1741388039 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1741388039 5466553 2748998d7db8078826afa1f272036265 ""
@@ -39,8 +39,8 @@
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/url/url.sty" 1741388039 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/web2c/texmf.cnf" 1741388039 42151 79f67285bdd95beca4d137b380b4b9e5 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1741388039 3346141 1288109d02d1c772df65535881471649 ""
-  "main.aux" 1749234593.73231 7427 a87ff6229dd24b76c1d6231be6540f0f "pdflatex"
-  "main.tex" 1749234592.85029 40795 44e26183ba93ae2bc750ea868edf5d9f ""
+  "main.aux" 1749234841.39474 7427 0f016252aad1c6c9a0b9f25432eb035e "pdflatex"
+  "main.tex" 1749234840.06741 40794 2adc8c82a1a55bb6b0670767c5e512a7 ""
   "svproc.cls" 1749161544.45791 42969 d62a9af07d0a21cd4646f95bc67af984 ""
   (generated)
   "main.aux"
