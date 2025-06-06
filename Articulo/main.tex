@@ -348,6 +348,128 @@ A partir de los hallazgos obtenidos, se proponen varias líneas de trabajo futur
 
 Estas líneas futuras apuntan hacia un sistema de predicción más integral, dinámico e integrado al ecosistema urbano, en el que la IA pueda desempeñar un rol activo en la transformación de la movilidad inteligente.
 
+\section{Discusión del Agente y su Inteligencia}
+
+\subsection{Análisis de las Propiedades del Agente}
+
+El sistema desarrollado exhibe las características fundamentales de un agente inteligente, demostrando capacidades avanzadas para operar en un entorno complejo y dinámico como el tráfico urbano.
+
+\subsubsection{Proactividad}
+
+El agente demuestra proactividad mediante:
+\begin{itemize}
+    \item \textbf{Anticipación de patrones}: No espera a que ocurra la congestión, sino que predice activamente niveles futuros basándose en indicadores tempranos
+    \item \textbf{Identificación de tendencias}: Detecta automáticamente patrones recurrentes (horas pico, días problemáticos) sin intervención humana
+    \item \textbf{Adaptación predictiva}: Los modelos con algoritmos genéticos evolucionan proactivamente para mejorar su precisión
+    \item \textbf{Generación de alertas tempranas}: Capacidad para advertir sobre congestión probable antes de que ocurra
+\end{itemize}
+
+\subsubsection{Autonomía}
+
+La autonomía del agente se manifiesta en:
+\begin{itemize}
+    \item \textbf{Procesamiento independiente}: Analiza datos y genera predicciones sin supervisión constante
+    \item \textbf{Auto-optimización}: Los algoritmos genéticos permiten que el sistema mejore autónomamente su arquitectura
+    \item \textbf{Toma de decisiones}: Selecciona automáticamente el nivel de congestión más probable entre las tres categorías
+    \item \textbf{Gestión de incertidumbre}: Los modelos difusos y bayesianos manejan autónomamente datos imprecisos o incompletos
+\end{itemize}
+
+\subsubsection{Percepción del Entorno}
+El agente percibe su entorno mediante múltiples sensores virtuales:
+\begin{itemize}
+    \item \textbf{Sensores de tráfico}: Vehicle\_Count, Traffic\_Speed\_kmh, Road\_Occupancy\\%
+    \item \textbf{Sensores ambientales}: Weather\_Condition, temperatura implícita en condiciones climáticas
+    \item \textbf{Sensores temporales}: Timestamp procesado en Hour, Day\_of\_Week, Is\_Rush\_Hour
+    \item \textbf{Sensores espaciales}: Latitude, Longitude para contexto geográfico
+    \item \textbf{Sensores de eventos}: Accident\_Report, Traffic\_Light\_State
+    \item \textbf{Sensores sociales}: Sentiment\_Score, Ride\_Sharing\_Demand
+\end{itemize}
+
+\subsection{Retos de Inteligencia Artificial Abordados}
+
+\subsubsection{Manejo del Dinamismo}
+
+El tráfico urbano es inherentemente dinámico, presentando variaciones constantes. El agente aborda este reto mediante:
+
+\begin{itemize}
+    \item \textbf{Modelos temporales}: Las redes neuronales capturan dependencias temporales mediante características como Hour\_sin/cos
+    \item \textbf{Adaptación continua}: Los algoritmos genéticos permiten evolución del modelo ante cambios en patrones
+    \item \textbf{Ventanas deslizantes}: Procesamiento de datos en intervalos de 5 minutos para capturar cambios rápidos
+    \item \textbf{Múltiples escalas temporales}: Análisis desde minutos hasta patrones estacionales
+\end{itemize}
+
+\subsubsection{Gestión de la Incertidumbre}
+La incertidumbre es omnipresente en sistemas de tráfico. El agente la maneja mediante:
+
+\begin{itemize}
+    \item \textbf{Lógica Difusa}: Maneja la vaguedad inherente en conceptos como "tráfico medio" o "congestión alta"
+    \item \textbf{Cloud Model}: Combina aleatoriedad y borrosidad para representar incertidumbre dual
+    \item \textbf{Redes Bayesianas}: Modelan incertidumbre probabilística en relaciones causales
+    \item \textbf{SVM con probabilidades}: Proporciona niveles de confianza en las predicciones
+    \item \textbf{Ensemble implícito}: La comparación de múltiples técnicas permite cuantificar la incertidumbre epistémica
+\end{itemize}
+
+\subsubsection{Capacidades de Aprendizaje}
+
+El agente demuestra aprendizaje sofisticado a múltiples niveles:
+
+\textbf{1. Aprendizaje Supervisado}
+\begin{itemize}
+    \item Redes neuronales aprenden patrones complejos no lineales
+    \item SVM encuentra fronteras óptimas de decisión
+    \item ANFIS combina aprendizaje neuronal con razonamiento difuso
+\end{itemize}
+
+\textbf{2. Aprendizaje Evolutivo}
+\begin{itemize}
+    \item Algoritmos genéticos descubren arquitecturas óptimas
+    \item Selección natural de mejores configuraciones
+    \item Exploración del espacio de soluciones mediante mutación
+\end{itemize}
+
+\textbf{3. Aprendizaje Estructural}
+\begin{itemize}
+    \item Redes Bayesianas aprenden dependencias causales
+    \item Identificación de variables más influyentes
+    \item Construcción de modelos mentales del dominio
+\end{itemize}
+
+\subsection{Nivel de Inteligencia del Agente}
+
+Según la taxonomía de Russell y Norvig, el agente desarrollado se clasifica como:
+
+\begin{itemize}
+    \item \textbf{Agente basado en modelos}: Mantiene representaciones internas del estado del tráfico
+    \item \textbf{Agente basado en objetivos}: Orientado a maximizar la precisión de predicción
+    \item \textbf{Agente basado en utilidad}: Balancea múltiples objetivos (precisión, tiempo, interpretabilidad)
+    \item \textbf{Agente que aprende}: Mejora su desempeño mediante experiencia
+\end{itemize}
+
+\subsection{Limitaciones y Desafíos Pendientes}
+
+A pesar de sus capacidades avanzadas, el agente enfrenta limitaciones:
+
+\begin{itemize}
+    \item \textbf{Reactividad limitada}: No puede responder a eventos en tiempo real no históricos
+    \item \textbf{Sesgo histórico}: Asume que el futuro seguirá patrones del pasado
+    \item \textbf{Explicabilidad parcial}: Los modelos más precisos (RN+GA) son menos interpretables
+    \item \textbf{Generalización geográfica}: Entrenado en datos específicos de una región
+\end{itemize}
+
+\subsection{Contribución a la Inteligencia Artificial}
+Este trabajo contribuye al campo de la IA demostrando:
+
+\begin{enumerate}
+    \item \textbf{Integración efectiva}: Combinación exitosa de múltiples paradigmas de IA
+    \item \textbf{Balance practical}: Trade-offs entre precisión, eficiencia e interpretabilidad
+    \item \textbf{Aplicación real}: Solución a un problema urbano crítico con impacto social
+    \item \textbf{Marco comparativo}: Metodología para evaluar técnicas de IA en dominios complejos
+    \item \textbf{Arquitectura híbrida}: Modelo para futuros sistemas que requieran múltiples capacidades cognitivas
+\end{enumerate}
+
+El agente desarrollado representa un avance hacia sistemas de IA más completos, que no solo predicen, sino que comprenden, razonan y se adaptan al complejo entorno del tráfico urbano, sentando las bases para ciudades más inteligentes y eficientes.
+
+
 \section{Bibliografía}
 \begin{thebibliography}{99}
 
